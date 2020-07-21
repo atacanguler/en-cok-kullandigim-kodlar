@@ -1,0 +1,55 @@
+
+
+
+
+            MySqlConnection conn = new MySqlConnection(ConnString.ToString());
+
+
+
+            using (MySqlCommand cmd = new MySqlCommand(SqlString))
+
+            {
+
+                cmd.Connection = conn;
+
+                cmd.Parameters.Add("@Coulmn", MySqlDbType.VarChar, 999).Value = Variable.ToString();
+
+                cmd.Parameters.Add("@Coulmn", MySqlDbType.VarChar, 999).Value = Variable.ToString();
+
+                cmd.Parameters.Add("@Coulmn", MySqlDbType.VarChar, 3999).Value = Variable.ToString();
+
+                cmd.Parameters.Add("@Coulmn", MySqlDbType.DateTime).Value = DateTime.Parse(Variable.ToString());
+
+                cmd.Parameters.Add("@Coulmn", MySqlDbType.Bit, 1).Value = int.Parse(Variable.ToString());
+
+                cmd.Parameters.Add("@Coulmn", MySqlDbType.VarChar, 254).Value = Variable.ToString();
+
+                cmd.Parameters.Add("@Coulmn", MySqlDbType.Int16, 11).Value = int.Parse(Variable.ToString());
+
+                cmd.Parameters.Add("@Coulmn", MySqlDbType.Bit, 1).Value = int.Parse(Variable.ToString());
+
+
+
+
+
+
+
+                conn.Open();
+
+                int z = cmd.ExecuteNonQuery();
+
+
+
+                if (z > 0)
+
+                {
+
+
+                     //  Kayıt Başarılı
+
+
+                }
+
+
+}
+
