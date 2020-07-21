@@ -1,0 +1,16 @@
+        EditText EttxtKilo = (EditText) findViewById(R.id.editView);
+
+        EttxtKilo.setFocusableInTouchMode(false);
+        EttxtKilo.setFocusable(false);
+
+        EttxtKilo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                EditText EttxtKilo = (EditText) findViewById(R.id.editViewY);
+
+                EttxtKilo.setFocusableInTouchMode(true);
+                EttxtKilo.setFocusable(true);
+
+            }});
