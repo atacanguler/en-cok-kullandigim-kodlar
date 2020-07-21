@@ -1,0 +1,13 @@
+                        WallpaperManager myWallpaperManager = WallpaperManager.getInstance(getApplicationContext());
+
+                        try {
+
+
+                            myWallpaperManager.setResource(R.drawable.image);
+
+
+
+                        } catch (IOException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
