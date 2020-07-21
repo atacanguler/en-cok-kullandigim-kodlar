@@ -1,0 +1,12 @@
+public MediaPlayer mPlayer = null;             
+mPlayer = MediaPlayer.create(PianoActivity.this, R.raw.pianoa);
+mPlayer.start();
+
+
+            //mPlayer.stop();
+           
+            //mPlayer.release();
+           
+            //mPlayer.reset();
+
+            //mPlayer = null;
