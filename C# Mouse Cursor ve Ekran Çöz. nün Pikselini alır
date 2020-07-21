@@ -1,0 +1,11 @@
+            XXform = int.Parse(Cursor.Position.X.ToString());
+            YYform = int.Parse(Cursor.Position.Y.ToString());
+
+
+Mouse Cursorunun Pozisyonunu belirler.
+
+
+            int XXX = int.Parse(Screen.PrimaryScreen.Bounds.Width.ToString());
+            int YYY = int.Parse(Screen.PrimaryScreen.Bounds.Height.ToString());
+
+Ekran Çözünürlüğünü aktarır.
