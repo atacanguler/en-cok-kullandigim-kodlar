@@ -1,0 +1,119 @@
+XML Layout File
+
+
+                <com.google.android.youtube.player.YouTubePlayerView
+                    android:id="@+id/youtubeview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+
+//////////////////////////////////
+
+Java Class
+
+
+
+import com.google.android.youtube.player.YouTubeBaseActivity;
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayer.ErrorReason;
+import com.google.android.youtube.player.YouTubePlayer.PlaybackEventListener;
+import com.google.android.youtube.player.YouTubePlayer.PlayerStateChangeListener;
+import com.google.android.youtube.player.YouTubePlayer.Provider;
+import com.google.android.youtube.player.YouTubePlayerView;
+
+
+public class VideoDetayActivity extends YouTubeBaseActivity  implements YouTubePlayer.OnInitializedListener {}
+
+
+//////////////////////////////////////////////////////////
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_videodetay);
+
+
+        String API_KEY = "AIzaSyAk0gRIHj57GdZ2nOLuM4voZorkc50WfQ8";
+
+        /** Initializing YouTube Player View **/
+        YouTubePlayerView youTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtubeview);
+        youTubePlayerView.initialize(API_KEY, this);
+    }
+
+
+
+
+
+    @Override
+    public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult result) {
+        Toast.makeText(this, "Failed to initialize.", Toast.LENGTH_LONG).show();
+    }
+
+
+
+
+
+    @Override
+    public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean wasRestored) {
+        //if(null== player) return;
+        player.setPlayerStateChangeListener(playerStateChangeListener);
+        player.setPlaybackEventListener(playbackEventListener);
+
+
+
+        YoutubeCode = VideoActivity.VideoUrl.toString();
+
+        // Start buffering
+        if (!wasRestored) {
+            player.cueVideo(YoutubeCode.toString());
+        }
+    }
+
+
+
+
+    private YouTubePlayer.PlaybackEventListener playbackEventListener = new YouTubePlayer.PlaybackEventListener() {
+        @Override
+        public void onBuffering(boolean arg0) {
+        }
+        @Override
+        public void onPaused() {
+        }
+        @Override
+        public void onPlaying() {
+        }
+        @Override
+        public void onSeekTo(int arg0) {
+        }
+        @Override
+        public void onStopped() {
+        }
+    };
+
+
+
+
+
+    private YouTubePlayer.PlayerStateChangeListener playerStateChangeListener = new YouTubePlayer.PlayerStateChangeListener() {
+        @Override
+        public void onAdStarted() {
+        }
+        @Override
+        public void onError(YouTubePlayer.ErrorReason arg0) {
+        }
+        @Override
+        public void onLoaded(String arg0) {
+        }
+        @Override
+        public void onLoading() {
+        }
+        @Override
+        public void onVideoEnded() {
+        }
+        @Override
+        public void onVideoStarted() {
+        }
+    };
