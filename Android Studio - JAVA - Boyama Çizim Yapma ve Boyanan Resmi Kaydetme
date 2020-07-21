@@ -1,0 +1,94 @@
+ public void boyama(final String hangiresim){
+
+
+            paint.setColor(Color.BLUE);
+            paint.setStrokeWidth(20);
+            matrix = new Matrix();
+            canvas.drawBitmap(bmp, matrix, paint);
+
+           final Bitmap bm;
+
+            choosenImageView.setImageBitmap(alteredBitmap);
+            choosenImageView.setOnTouchListener(new View.OnTouchListener() {
+                                                    @Override
+                                                    public boolean onTouch(View v, MotionEvent event) {
+
+                                                        int action = event.getAction();
+                                                        switch (action) {
+                                                            case MotionEvent.ACTION_DOWN:
+                                                                downx = event.getX();
+                                                                downy = event.getY();
+                                                                break;
+                                                            case MotionEvent.ACTION_MOVE:
+                                                                upx = event.getX();
+                                                                upy = event.getY();
+                                                                canvas.drawLine(downx, downy, upx, upy, paint);
+                                                                choosenImageView.invalidate();
+                                                                downx = upx;
+                                                                downy = upy;
+                                                                break;
+                                                            case MotionEvent.ACTION_UP:
+                                                                upx = event.getX();
+                                                                upy = event.getY();
+                                                                canvas.drawLine(downx, downy, upx, upy, paint);
+                                                                choosenImageView.invalidate();
+
+                                                                ///////////
+
+
+                                                                String extStorageDirectory = Environment.getExternalStorageState().toString();
+                                                                extStorageDirectory = Environment.getExternalStorageDirectory()
+                                                                        .toString();
+
+
+
+                                                                // TODO Auto-generated method stub
+                                                                OutputStream outStream = null;
+                                                                File file = new File(getExternalCacheDir(), hangiresim);
+
+                                                                try {
+
+                                                                    outStream = new FileOutputStream(file);
+                                                                    alteredBitmap.compress(Bitmap.CompressFormat.PNG, 100, outStream);
+                                                                    outStream.flush();
+                                                                    outStream.close();
+
+
+                                                                    Toast.makeText(ResimActivity.this, "Çizdim",
+                                                                            Toast.LENGTH_LONG).show();
+
+                                                                } catch (FileNotFoundException e) {
+                                                                    // TODO Auto-generated catch block
+                                                                    e.printStackTrace();
+                                                                    Toast.makeText(ResimActivity.this, e.toString(),
+                                                                            Toast.LENGTH_LONG).show();
+                                                                } catch (IOException e) {
+                                                                    // TODO Auto-generated catch block
+                                                                    e.printStackTrace();
+                                                                    Toast.makeText(ResimActivity.this, e.toString(),
+                                                                            Toast.LENGTH_LONG).show();
+                                                                }
+
+
+
+                                                                //////////////
+
+                                                                break;
+                                                            case MotionEvent.ACTION_CANCEL:
+                                                                break;
+                                                            default:
+                                                                break;
+                                                        }
+                                                        return true;
+
+                                                    }
+                                                }
+            );
+        } catch (Exception e) {
+            Log.v("ERROR", e.toString());
+        }
+
+
+
+
+    }
