@@ -1,0 +1,14 @@
+SqlConnection cnn = new SqlConnection("Data Source=***;Initial Catalog=***;Persist Security Info=True;User ID=***;Password=***;");
+
+SqlCommand cmm = new SqlCommand("select * from TABLO order by ALAN Asc", cnn);
+        cnn.Open();
+
+        using (DataSet ds = new DataSet())
+        {
+            DataTable dt = new DataTable();
+            ds.Tables.Add(dt);
+            SqlDataAdapter da = new SqlDataAdapter(cmm);
+            da.Fill(dt);
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+        }
