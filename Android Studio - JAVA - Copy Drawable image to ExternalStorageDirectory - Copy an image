@@ -1,0 +1,19 @@
+            Drawable drawable = getResources().getDrawable(R.drawable.resim1);
+            Bitmap bitmap = ((BitmapDrawable)drawable).getBitmap();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 60, bytearrayoutputstream);
+            File file = new File( Environment.getExternalStorageDirectory()  + "/Android/data/" + R.class.getPackage().getName() + "/" + "cache/resim1.png");
+
+            try
+            {
+                file.createNewFile();
+
+                FileOutputStream fileoutputstream = new FileOutputStream(file);
+
+                fileoutputstream.write(bytearrayoutputstream.toByteArray());
+
+                fileoutputstream.close();
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
