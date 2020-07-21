@@ -1,0 +1,45 @@
+    Handler handle = null;
+    Runnable runnable = null;
+    int zaman;
+
+
+    String line;
+    boolean netvar = true;
+    BufferedReader reader;
+
+    Boolean baglantivarmi = true;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+        zaman = 0;
+        handle = new Handler();
+        runnable = new Runnable() {
+
+            @Override
+            public void run() {
+
+                zaman++;
+
+                if (zaman == 2) {
+
+                    handle.removeCallbacks(runnable);
+
+
+                    Intent intent = new Intent(getApplicationContext(), ProgramActivity.class);
+                    startActivity(intent);
+
+
+                }
+                handle.postDelayed(runnable, 1000);
+
+            }
+        };
+        runnable.run();
+
+
+    }
