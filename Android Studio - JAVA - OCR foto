@@ -1,0 +1,17 @@
+    public String bitmapToString(Bitmap bitmap) {
+        TextRecognizer textRecognizer = new TextRecognizer.Builder(getApplicationContext()).build();
+
+        Frame imageFrame = new Frame.Builder().setBitmap(bitmap).build();
+        String imageText = "";
+        SparseArray<TextBlock> textBlocks = textRecognizer.detect(imageFrame);
+
+        for (int i = 0; i < textBlocks.size(); i++) {
+            TextBlock textBlock = textBlocks.get(textBlocks.keyAt(i));
+            imageText = imageText + textBlock.getValue();
+        }
+        return imageText;
+    }
+
+//// dependencies
+
+    compile 'com.google.android.gms:play-services-vision:11.8.0'
