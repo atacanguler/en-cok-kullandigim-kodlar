@@ -1,0 +1,10 @@
+        final Button btnxxx = (Button) findViewById(R.id.Buttonx);
+        btnxxx.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+            }
+
+        });
