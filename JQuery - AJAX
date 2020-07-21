@@ -1,0 +1,63 @@
+Default.aspx
+
+function CallAspxPageWithQueryString() {
+
+    $.ajax({
+
+        type: ‘GET’,
+
+        url: ‘Ajax1.aspx’,
+
+        data: ‘name=’ + escape($(‘#text1’).val()),
+
+        success: function(result) {
+
+            $(‘#sonuc’).html(result);
+
+        },
+
+        error: function() {
+
+            alert(‘Talep esnasında sorun oluştu. Yeniden deneyin’);
+
+        }
+
+    });
+
+}
+
+
+
+
+
+
+
+Default.aspx
+
+<script type=”text/javascript”>
+
+    function CallAspxPage() {
+
+        $.ajax({
+
+            type: ‘GET’,
+
+            url: ‘Ajax1.aspx’,
+
+            success: function(result) {
+
+                $(‘#sonuc’).html(result);
+
+            },
+
+            error: function() {
+
+                alert(‘Talep esnasında sorun oluştu. Yeniden deneyin’);
+
+            }
+
+        });
+
+    }
+
+</script>
