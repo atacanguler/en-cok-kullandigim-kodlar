@@ -1,0 +1,5 @@
+                ImageView imgANA = (ImageView) findViewById(R.id.imageViewANA);
+                Drawable myDrawable = getResources().getDrawable(R.drawable.m01);
+                imgANA.setImageDrawable(myDrawable);
+
+/// Drawable dizinden kod ile resim belirleme ayarlama
