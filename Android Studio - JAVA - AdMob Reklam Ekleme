@@ -1,0 +1,113 @@
+TOOLS >> FIREBASE en >> Admob Reklam Ekleme Modülünü tıklayın. ve adımları takip ederek ilerleyebilirsiniz.
+
+
+// Gradle Scripts (Apps) dependencies e eklenecek yapı
+
+implementation 'com.google.firebase:firebase-ads:15.0.1'
+implementation 'com.google.firebase:firebase-core:16.0.4'
+ 
+// Reklamın olduğu Layout a (xml) aşağıdaki tagları ekleyiniz.
+
+
+            <RelativeLayout xmlns:ads="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/aaaas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:foregroundGravity="top|center"
+                android:layout_gravity="center|top|start"
+                android:gravity="top|start">
+
+
+                <com.google.android.gms.ads.AdView
+                    android:id="@+id/adView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="false"
+                    android:layout_centerVertical="false"
+                    ads:adSize="BANNER"
+                    ads:adUnitId="@string/banner_ad_unit_id"></com.google.android.gms.ads.AdView>
+
+            </RelativeLayout>
+
+
+// Layout un Class sayfasına (Activity) eklenecek JAVA kodları
+
+
+
+
+    private static final String TAG = "Activity";
+
+    private AdView mAdView;
+
+
+    private InterstitialAd mInterstitialAd;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity);
+
+
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+
+        ///
+
+        MobileAds.initialize(this, "ca-app-pub-xxxxxxxxxxxxxxxxx~xxxxxx");
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-xxxxxxxxxxxxxxxxxxxxxxx"); //AD_UNIT_ID yerine admobdan aldığınız Id yi yazıyoruz.
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+        mAdView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//...
+
+                if (mInterstitialAd.isLoaded()) { //bir buton tıklandığında reklamın çıkması için gereken fonksiyonunuzu
+//yazıyoruz.
+                    mInterstitialAd.show();
+                } else {
+
+                    Log.d("TAG", "The interstitial wasn't loaded yet.");
+                }
+            }
+        });
+
+
+}
+
+
+///////////////// MAINFESTS e eklenecek KOD
+
+////// Application tagının içine yazınız.
+
+
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-xxxxxxxxxxxxxxxxxx~xxxxx"/>
+
+
+
+//////////  VALUES e Strings olarak tanımlanması gereken KOD
+
+
+
+
+    <string name="banner_ad_unit_id">ca-app-pub-xxxxxxxxxxxxxxxxxxxxxxx</string>
+
+
+/// ca-app-pub-xxxxxxxxxxxxxxxxxxxxxxx Tanımlama Kodu REKLAM ID NİZ ve UYGULAMA ID NIZ dir. ve AdMob un sayfasından Tanımlanan kodlardır. Ordan edineceksiniz.
+
+///// İşlemler Tamamlandı Şimdi AdMod Reklamınızı Uygulamanızda Yayınlayabilirsiniz. 
+///// Kolay Gelsin.
