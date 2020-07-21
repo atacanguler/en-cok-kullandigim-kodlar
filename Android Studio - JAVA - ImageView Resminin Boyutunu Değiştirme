@@ -1,0 +1,5 @@
+// ImageView (Tanımlanan Resimin) Boyutlarını değiştiriyoruz
+
+ImageView vvv = (ImageView) findViewById(R.id.imageV1);
+LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(300,300);
+vvv.setLayoutParams(parms);
