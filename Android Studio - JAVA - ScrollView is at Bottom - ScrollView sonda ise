@@ -1,0 +1,21 @@
+        final ScrollView scrollView = (ScrollView) findViewById(R.id.anaScroll);
+        scrollView.getViewTreeObserver()
+                .addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+                    @Override
+                    public void onScrollChanged() {
+                        if (scrollView.getChildAt(0).getBottom()
+                                <= (scrollView.getHeight() + scrollView.getScrollY())) {
+                          
+
+                          //scroll view is at bottom
+
+
+                            Toast.makeText(FotoActivity.this, "Sondadır!", Toast.LENGTH_SHORT).show();
+
+
+
+                        } else {
+                            //scroll view is not at bottom
+                        }
+                    }
+                });
