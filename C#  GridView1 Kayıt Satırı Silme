@@ -1,0 +1,17 @@
+     public void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+
+ 
+         string id = GridView1.DataKeys[e.RowIndex].Value.ToString();
+
+
+
+        SqlConnection cnn = new SqlConnection("Data Source=***;Initial Catalog=***;Persist Security Info=True;User ID=***;Password=***;");
+
+
+        SqlCommand cmm = new SqlCommand("delete from pManager where pID=" + id, cnn);
+        cnn.Open();
+        int gyg = cmm.ExecuteNonQuery();
+        cnn.Close();
+
+ }
