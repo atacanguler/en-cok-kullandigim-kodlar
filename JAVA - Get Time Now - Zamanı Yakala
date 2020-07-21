@@ -1,0 +1,3 @@
+        Date currentTime = Calendar.getInstance().getTime();
+
+        String SimdikiZaman = currentTime.toString();
