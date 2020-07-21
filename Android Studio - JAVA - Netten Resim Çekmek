@@ -1,0 +1,16 @@
+        try {
+
+
+            ImageView i = (ImageView)findViewById(R.id.imageView1);
+         
+            Bitmap bitmap = null;
+         
+            bitmap = BitmapFactory.decodeStream((InputStream)new URL("http://www.nvmvzv.com/kelimeoyunu/BannerDik.png").getContent());
+
+            i.setImageBitmap(bitmap);
+
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
