@@ -1,0 +1,14 @@
+/////////////////////////////////////////  GET TEXT VIEW
+
+
+                final AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.edit_ip);
+
+                txttxt = textView.getText().toString();
+
+
+
+//////////////////////////////////////////    SET TEXTVIEW
+
+                TextView ttvv = (TextView) findViewById(R.id.textBu);
+
+                ttvv.setText(Html.fromHtml("texttext"));
