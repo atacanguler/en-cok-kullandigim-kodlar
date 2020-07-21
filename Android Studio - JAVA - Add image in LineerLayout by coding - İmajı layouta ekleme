@@ -1,0 +1,34 @@
+
+            LinearLayout layout3 = new LinearLayout(this);
+
+
+            layout3.setLayoutParams(new LinearLayout.LayoutParams(400, 400));
+            layout3.setOrientation(LinearLayout.VERTICAL);
+
+            Drawable myDrawableLayout3 = (Drawable)getResources().getDrawable(R.drawable.xxxxx);
+
+            layout3.setBackground(myDrawableLayout3);
+            layout3.setGravity(Gravity.CENTER);
+            layout3.setPadding(10,10,10,10);
+
+            ///////////////
+
+
+            ImageView image1 = new ImageView(this);
+
+            image1.setId(some_random_id);
+
+
+            image1.setLayoutParams(new LinearLayout.LayoutParams(350, LinearLayout.LayoutParams.WRAP_CONTENT));
+
+            image1.setScaleType(ImageView.ScaleType.FIT_CENTER);
+
+            image1.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+
+
+                }
+            });
+
+
+            layout3.addView(image1);
