@@ -1,0 +1,82 @@
+ public static void createFile(String path) {
+
+        try {
+
+            File file = new File(path);
+
+            if (!file.exists()) {
+
+                file.createNewFile();
+
+            } else {
+
+                FileOutputStream writer = new FileOutputStream(path);
+                writer.write(("").getBytes());
+                writer.close();
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+////// Eğer dosyayı oluşturmakta sıkıntı çekiyorsanız. Tanımladığınız "file" metoduna yazma izni veriniz.
+
+
+    String s="";
+    public void WriteBtn(String daataa) {
+        // add-write text into file
+
+        try {
+
+            FileOutputStream fileout=openFileOutput("notdefterimdata.txt", MODE_PRIVATE);
+            OutputStreamWriter outputWriter=new OutputStreamWriter(fileout);
+            outputWriter.write(daataa.toString());
+            outputWriter.close();
+
+            //display file saved message
+            Toast.makeText(getBaseContext(), "Başarıyla Kaydedildi!",
+                    Toast.LENGTH_SHORT).show();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+    }
+
+
+
+
+
+    // Read text from file
+    public void ReadBtn() {
+        //reading text from file
+
+        try {
+
+            FileInputStream fileIn=openFileInput("notdefterimdata.txt");
+            InputStreamReader InputRead= new InputStreamReader(fileIn);
+
+            char[] inputBuffer= new char[20000];
+
+            int charRead;
+
+            while ((charRead=InputRead.read(inputBuffer))>0) {
+
+                // char to string conversion
+                String readstring=String.copyValueOf(inputBuffer,0,charRead);
+
+                s +=readstring;
+
+            }
+
+            InputRead.close();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+    }
