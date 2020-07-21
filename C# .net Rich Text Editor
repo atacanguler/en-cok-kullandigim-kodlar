@@ -1,0 +1,22 @@
+// .aspx
+
+<asp:TextBox ID="txtTinyMCE" runat="server" TextMode="MultiLine"></asp:TextBox>
+ <br />
+ <asp:Button ID="btnSubmit" runat="server" Text="KAYDET" OnClick="Submit" />
+  <hr />
+  <asp:Label ID="lblContent" runat="server"></asp:Label>
+  <script type="text/javascript" src="https://tinymce.cachefly.net/4.0/tinymce.min.js"></script>
+  <script type="text/javascript">
+    tinymce.init({ selector: 'textarea', width: 950 , height: 400});
+  </script>
+
+
+
+///////////////////////////////////////////////////
+
+    // .cs
+
+    protected void Submit(object sender, EventArgs e)
+    {
+        string data = txtTinyMCE.Text.ToString();
+    }
