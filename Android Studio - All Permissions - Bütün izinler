@@ -1,0 +1,162 @@
+<uses-permission android:name=”android.permission.INTERNET” />
+
+
+Bütün izinler ve açıklamaları :
+
+ACCESS_CHECKIN_PROPERTIES : Checkin veritabanının properties tablosuna okuma ve yazma erişimi sağlar.
+
+ACCESS_COARSE_LOCATION: Uygulamanın Cell-ID yada Wi-Fi bilgilerinden bulduğu tahmini lokasyon bilgisini kullanmasını sağlar.
+
+ACCESS_FINE_LOCATION: Uygulamanın GPS bilgilerine ulaşmasını sağlar.
+
+ACCESS_LOCATION_EXTRA_COMMANDS: Uygulamaya location provider’ların ekstara komutlarına erişim hakkı tanır.
+
+ACCESS_NETWORK_STATE: Uygulamaya, network bilgilerine erişim hakkı tanır.
+
+ACCESS_WIFI_STATE: Uygulamalara Wi-Fi network’lerine erişim hakkı tanır.
+
+BATTERY_STATS: Uygulamaya akü şarj bilgilerine erişim hakkı tanır.
+
+BIND_APPWIDGET: Uygulamaya, AppWidget service’ine AppWidget verilerine hangi uygulamaların erişim hakkına sahip olacaklarını belirleme hakkı tanır.
+
+BLUETOOTH: Uygulamalara bluetooth aygıtlarına erişim hakkı tanır.
+
+BLUETOOTH_ADMIN: Uygulamaya bluetooth aygıtlarını arama ve birbiriyle eşleştirme hakkı tanır.
+
+BRICK: Aygıtı devre dışı bırakma hakkı tanır.
+
+BROADCAST_PACKAGE_REMOVED: Uygulamaya bir uygulama package’inin kaldırıldığına dair mesaj yayınlama hakkı tanır.
+
+BROADCAST_SMS: Uygulamaya SMS alındı mesajının yayınlanma hakkını tanır.
+
+CALL_PHONE: Uygulamaya, bir telefon görüşmesini arama tuşlarını kullanmadan aktive etme hakkını tanır.
+
+CALL_PRIVILEGED: Uygulamaya, bir telefonu arayabilme yetkisi verir.
+
+CAMERA: KAmera erişim hakkını verir.
+
+CHANGE_COMPONENT_ENABLED_STATE: Uygulamaya, başka uygulamaların componentlerini değiştirme yada durumunu öğrenme hakkı verir.
+
+CHANGE_NETWOK_STATE: Uygulamaya, network bağlantı durumunu değiştirme hakkı tanır.
+
+CHANGE_WIFI_MULTICAST_STATE: Uygulamanın Wi-Fi Multicast moduna giriş hakkı sağlar.
+
+CHANGE_WIFI_STATE: Uygulamaya, Wi-Fi bağlantı durumunu değiştirme hakkı tanır.
+
+CLEAR_APP_CACHE: Uygulamaya, aygıtta yüklü olan tüm uygulamaların cache’lerini silme yetkisi tanır.
+
+CLEAR_APP_USER_DATA: Uygulamaya kullanıcının verilerini silme hakkı tanır.
+
+DELETE_CACHE_FILES: Uygulamaya cache dosyalarını silme hakkı tanır.
+
+DELETE_PACKAGES: Uygulamaya package silme hakkı tanır.
+
+DEVICE_POWER: Power Management için Low-Level erişim hakkı tanır.
+
+EXPAND_STATUS_BAR: Uygulamanın ekrandaki status bar’ını görünteleyip, görüntülememesi hakkını sağlar.
+
+FACTORY_TEST: Uygulamayı root user olarak test etme hakkı sağlar.
+
+FLASHLIGHT: Flash ışığını açma hakkını tanır.
+
+GET_ACCOUNTS: Account service’indeki account’ların listesine erişim hakkı tanır.
+
+GET_PACKAGE_SIZE: Uygulamaya, herhangi bir package’in kullandığı alan bilgisine erişim hakkın sağlar.
+
+GET_TASKS: Şu anda çalışan taskların listesine erişim hakkı sağlar.
+
+GLOBAL_SEARCH: Content provider’ların verilerine erişim hakkı sağlar.
+
+HARDWARE_TEST: Ayygıt donanımına erişim hakkı sağlar.
+
+INSTALL_LOCATION_PROVIDER: Uygulamaya location manager’a yeni bir location provider yükleme yetkisi sağlar.
+
+INSTALL_PACKAGES: Uygulamaya package yükleme yetkisi sağlar.
+
+INTERNAL_SYSTEM_WINDOW: Uygulamaya sistem kullancı arayüzü tarafından kullanılan pencereleri görüntüleme hakkı sağlar.
+
+INTERNET: Network socket’lerine erişim yetkisi sağlar.
+
+KILL_BACKGROUND_PROCESSES: Arka plandaki işlemleri kapatma yetkisi verir.
+
+MANAGE_ACCOUNTS: Uygulamaya, AccountManager’daki Account listesine erişim hakkı tanır. MODIFY_AUDIO_SETTINGS: Ses ayarlarını değiştirme yetkisi verir.
+
+MODIFY_PHONE_STATE: Telefon durum ayarını değiştirme yetkisi verir.
+
+MOUNT_FORMAT_FILESYSTEMS: SD Kartları formatlama yetkisi verir.
+
+MOUNT_UNMOUNT_FILESYSTEMS: Dosya sistemlerinin mount ayda unmount edilmesini sağlar.
+
+NFC: NFC iletişim hakkı verir.
+
+PROCESS_OUTGOING_CALLS: Çıkan aramaları yönetme imkanı sağlar.
+
+READ_CALENDAR: Kullanıcı takvim bilgilerine erişim hakkı sağlar.
+
+READ_CONTACTS: Kullanıcı kontak bilgilerine erişim hakkı sağlar.
+
+READ_FRAME_BUFFER: Screen-shot alabilme yetkisi sağlar.
+
+READ_HISTORY_BOOKMARKS: Kullanıcının browsing history verilerine erişim hakkını verir.
+
+READ_LOGS: Düşük seviyeb sistem loglarını okuma hakkı verir.
+
+READ_PHONE_STATE: Telefon durum bilgisini okuma yetkisi verir.
+
+READ_SMS: SMS mesajlarını okuma yetkisi verir.
+
+READ_SYNC_SETTINGS: Sync ayarlarını okuma yetkisi verir.
+
+READ_SYNC_STATS: Sync durumunu okuma yetkisi verir.
+
+REBOOT: Aygıtı yeniden başlatma yetkisi verir.
+
+RECEIVE_BOOT_COMPLETED: Uygulamaya boot işlemi tamamlandıktan sonra ACTION_BBOT_COMPLETED mesajını alma hakkını sağlar.
+
+RECEIVE_MMS: MMS mesajlarını yönetme hakkı sağlar.
+
+RECEIVE_SMS: SMS mesajlarını yönetme hakkı sağlar.
+
+RECORD_AUDIO: Uygulamaya ses kaydı yapma hakkı verir.
+
+SEND_SMS: SMS gönderme hakkı verir.
+
+SET_DEBUG_APP: Uygulamayı debug için konfigüre eder.
+
+SET_ORIENTATION: Ekran rotasyonunu ayarlamayı sağlar.
+
+SET_TIME: Saati ayarlama yetkisi verir.
+
+SET_TIME_ZONE: Sistem zaman dilimini ayarlama yetkisini verir.
+
+SET_WALLPAPER: Arka plan resmini değiştirme yetkisi sağlar.
+
+STATUS_BAR: Status iconlarını ve barın kendisini açma kapama yetkisi verir.
+
+SUBSCIBED_FEEDS_READ: ContentProvider’ın verilerine erişim yetkisi verir.
+
+USER_SIP: SIP servislerini kullanım hakkı verir.
+
+VIBRATE: Aygıtı titretme yetkisi verir.
+
+WAKE_LOCK: Stand By’e geçiş engelleme yetkisi verir.
+
+WRITE_APN_SETTINGS: APN ayarlarına ayzma hakkı verir.
+
+WRITE_CALENDAR: Kullanıcının takvim verilerine yazma hakkı verir.
+
+WRITE_CONTACTS: Kontak verilerine yazma hakkı verir.
+
+WRITE_EXTARNAL_STORAGE: Kaldırılabilir disklere yazma hakkı verir.
+
+WRITE_GSERVICES: Google service map ayarlarını değiştirme yetkisi verir.
+
+WRITE_HISTORY_BOOKMARKS: Kullanıcının browsing history verilerini yazma hakkı verir.
+
+WRITE_SECURE_SETTINGS: Sistemin güvenlik ayarlarını okuma ve yazma hakkı verir.
+
+WRITE_SETTINGS: Sistem ayarlarını değiştirme hakkı verir.
+
+WRITE_SMS: SMS mesajı yazma hakkı verir.
+
+WRITE_SYNC_SETTINGS: Sync ayarlarını yazma hakkı verir.
