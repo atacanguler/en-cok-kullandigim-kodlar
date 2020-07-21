@@ -1,0 +1,28 @@
+        zaman = 0;
+        handle = new Handler();
+        runnable = new Runnable() {
+
+            @Override
+            public void run() {
+
+                zaman++;
+
+                if (zaman == 2){
+
+                    handle.removeCallbacks(runnable);
+
+
+
+
+                    Intent intent = new Intent(getApplicationContext(), TwoActivity.class);
+                    startActivity(intent);
+
+
+
+
+                }
+                handle.postDelayed(runnable, 1000);
+
+            }
+        };
+        runnable.run();
