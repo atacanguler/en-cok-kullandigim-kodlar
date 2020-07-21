@@ -1,0 +1,20 @@
+                        int OrginalWidth=0;
+                        int OrginalHeight=0;
+
+                        try {
+
+
+                            Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL(ilanImage1.toString()).getContent());
+                            OrginalWidth = bitmap.getWidth();
+                            OrginalHeight = bitmap.getHeight();
+
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+
+                        //getIMGSize(built);
+
+                        double oranXX = (double) OrginalHeight / (double) OrginalWidth;
+                        double yeniHeight = Ekranwidth * oranXX;
