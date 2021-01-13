@@ -1,0 +1,29 @@
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle("ONAYLAMA EKRANI");
+        builder.setMessage("Onaylıyor musunuz?");
+        builder.setPositiveButton("ONAYLA",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+
+                        SiparisiOnaylama(kayitno);
+
+
+
+                    }
+                });
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+
+
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
