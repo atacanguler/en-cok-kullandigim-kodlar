@@ -1,0 +1,14 @@
+
+            string SQLx = "SELECT * FROM table_ ***";
+            MySqlConnection connx = new MySqlConnection(connectionString.ToString());
+
+            DataTable dtxx = new DataTable();
+
+            MySqlDataAdapter dax = new MySqlDataAdapter(SQLx, connx);
+            dax.SelectCommand.CommandType = CommandType.Text;
+            dax.Fill(dtxx);
+
+            if (dtxx.Rows.Count > 0)
+            {
+            
+            }
