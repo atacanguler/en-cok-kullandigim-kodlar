@@ -1,0 +1,16 @@
+
+                string SQLu = "SELECT * FROM table_ *** ";
+                MySqlConnection connu = new MySqlConnection(connectionString.ToString());
+
+                DataTable dtx = new DataTable();
+
+                MySqlDataAdapter da = new MySqlDataAdapter(SQLu, connu);
+                da.SelectCommand.CommandType = CommandType.Text;
+                da.Fill(dtx);
+                
+                foreach (DataRow dr in dtx.Rows)
+                {
+                
+                string = dr[0].toString();
+                
+                }
