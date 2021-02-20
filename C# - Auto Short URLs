@@ -1,0 +1,14 @@
+
+            ///  Add Nuget Package RestSharp API
+
+
+            var client = new RestClient("https://url-shortener-service.p.rapidapi.com/shorten");
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("content-type", "application/x-www-form-urlencoded");
+            request.AddHeader("x-rapidapi-key", "aa784676a8msh279a62ae91552a1p1c4a09jsn3a5a10fc6caa");
+            request.AddHeader("x-rapidapi-host", "url-shortener-service.p.rapidapi.com");
+            request.AddParameter("application/x-www-form-urlencoded", "url=" + uzunurl.ToString(), ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+
+            string veri = response.Content.ToString();
+            
