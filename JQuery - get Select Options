@@ -1,0 +1,11 @@
+        var stringArrayKonum = new Array();
+
+        sayi = 0;
+        $("#selectbox option").each(function () {
+
+            stringArrayKonum[sayi] = $(this).val();
+
+            sayi++;
+        });
+
+        mesajkonum = stringArrayKonum;  // mesaj konum
