@@ -1,0 +1,62 @@
+
+                NameValueCollection nvc = Request.Form;
+                string mesaj = "";
+                string mesajkonum = "";
+                string gonderilecekmesajadet = "";
+                string gonderilecekmesajbirimfiyat = "";
+                string gonderilecekmesajtoplamtutar = "";
+
+
+                if (!string.IsNullOrEmpty(nvc["v1"])) { 
+
+                    mesaj = nvc["v1"].ToString();
+                }
+                if (!string.IsNullOrEmpty(nvc["v2"])) { 
+
+                        mesajkonum = nvc["v2"].ToString();
+
+                }
+
+                //string mesajdosyalar = Request.Form["v3"].ToString();
+                if (!string.IsNullOrEmpty(nvc["v4"]))
+                {
+
+                    gonderilecekmesajadet = nvc["v4"].ToString();
+
+                }
+                if (!string.IsNullOrEmpty(nvc["v5"]))
+                {
+
+                    gonderilecekmesajbirimfiyat = nvc["v5"].ToString();
+
+                }
+                if (!string.IsNullOrEmpty(nvc["v6"]))
+                {
+
+                    gonderilecekmesajtoplamtutar = nvc["v6"].ToString();
+
+                }
+
+                byte[] bytes = Encoding.Default.GetBytes(mesaj);
+                mesaj = Encoding.UTF8.GetString(bytes);
+
+                byte[] bytes2 = Encoding.Default.GetBytes(mesajkonum);
+                mesajkonum = Encoding.UTF8.GetString(bytes2);
+
+                byte[] bytes3 = Encoding.Default.GetBytes(gonderilecekmesajadet);
+                gonderilecekmesajadet = Encoding.UTF8.GetString(bytes3);
+
+                byte[] bytes4 = Encoding.Default.GetBytes(gonderilecekmesajbirimfiyat);
+                gonderilecekmesajbirimfiyat = Encoding.UTF8.GetString(bytes4);
+
+                byte[] bytes5 = Encoding.Default.GetBytes(gonderilecekmesajtoplamtutar);
+                gonderilecekmesajtoplamtutar = Encoding.UTF8.GetString(bytes5);
+
+
+
+                string filee = "";
+                var httpPostedFile = HttpContext.Current.Request.Files["file"];
+
+                filee = Request.Files["file"].ToString();
+
+                HttpPostedFile mesajdosyalar = httpPostedFile;
