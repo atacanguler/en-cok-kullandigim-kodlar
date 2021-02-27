@@ -1,0 +1,27 @@
+
+        var formData = new FormData();
+        formData.append('file', $('#ssDosya')[0].files[0]);
+        formData.append('v1', mesaj);
+        formData.append('v2', mesajkonum);
+        formData.append('v4', gonderilecekmesajadet);
+        formData.append('v5', gonderilecekmesajbirimfiyat);
+        formData.append('v6', gonderilecekmesajtoplamtutarX[0].toString());
+
+        $.ajax({
+
+            type: "POST",
+            url: 'xxxxxxxxxxxxxxxxxxx.aspx?yyyy=' + "true",
+            enctype: 'multipart/form-data',
+            data: formData,
+            processData: false,
+            contentType: false,
+            //data: { file: filename, v1: mesaj.toString(), v2: mesajkonum.toString(), v4: gonderilecekmesajadet.toString(), v5: gonderilecekmesajbirimfiyat.toString(), v6: gonderilecekmesajtoplamtutarX[0].toString() },
+            success: function (result) {
+
+                siparisvFONK(result);
+
+            },
+            error: function () {
+                alert('Hata !');
+            }
+
