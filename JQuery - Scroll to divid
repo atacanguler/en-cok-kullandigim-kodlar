@@ -1,0 +1,3 @@
+$('html, body').animate({
+            scrollTop: $("#divid").offset().top
+        }, 1000);
