@@ -1,0 +1,17 @@
+    veri1 = verii.split("@");
+
+    $('#selecttool').find('option').remove().end();
+
+    for (i = 1; i < veri1.length; i++) {
+
+        veri2 = veri1[i].split("ß");
+
+        verison1 = veri2[0].toString();
+        verison2 = veri2[1].toString();
+
+
+        $('#selecttool').append($('<option>', {
+            value: verison2,
+            text: verison1
+        }));
+    }
