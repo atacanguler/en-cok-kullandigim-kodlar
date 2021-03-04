@@ -1,0 +1,3 @@
+
+        deger1 = $("#selecttool option:selected").text() + "-" + $("#selecttool2 option:selected").text();
+        deger2 = $("#selecttool option:selected").val() + "-" + $("#selecttool2 option:selected").val();
