@@ -1,3 +1,9 @@
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<script>
+
+
+
+
 $.ajax({
     type: 'GET',
     url: 'Sayfa.aspx',
@@ -6,6 +12,8 @@ $.ajax({
     },
 });
 
+
+</script>
 /////////////////////
 
 Default.aspx
