@@ -1,0 +1,22 @@
+                        SharedPreferences.Editor editor = getSharedPreferences("1254621", MODE_PRIVATE).edit();
+                        editor.clear();
+                        editor.apply();
+                        editor.putString("idnumarasi",idnumarasi);
+                        editor.putString("idnumarasiFIRMA",idnumarasiFIRMA);//string değer ekleniyor
+                        editor.putString("idnumarasiCALISAN",idnumarasiCALISAN);
+                        editor.apply(); //Kayıt
+                        
+                        // TANIMLA
+                        
+                        ///////////////////////////////////////
+                        
+                        
+
+                        SharedPreferences prefs = getSharedPreferences("1254621", MODE_PRIVATE);
+
+                        data1 = prefs.getString("idnumarasi","");
+                        data2 = prefs.getString("idnumarasiFIRMA","");
+                        data3 = prefs.getString("idnumarasiCALISAN","");
+
+                        // VERİÇEK
+                        
