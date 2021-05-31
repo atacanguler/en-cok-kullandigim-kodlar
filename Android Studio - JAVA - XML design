@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="35sp"
+    android:layout_width="wrap_content">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#ffffff"/>
+            <corners android:radius="10dp" />
+            <stroke
+                android:width="2dp"
+                android:color="#F44336"
+                />
+        </shape>
+    </item>
+</selector>
+
+
+////////////////////////////////////////////////////
+
+
+
+                    <EditText
+                        android:id="@+id/editText"
+                        android:autofillHints="@string/app_name"
+                        android:layout_width="match_parent"
+                        android:ems="10"
+                        android:hint="Telefon Numarası"
+                        android:inputType="phone"
+                        android:textColor="@color/black"
+                        
+                        android:background="@drawable/edittextborder"
+
+                        android:paddingLeft="10sp"
+                        android:textColorHint="@color/black"
+                        android:layout_height="45sp"
+                        android:padding="5sp"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="15sp"
+                        />
