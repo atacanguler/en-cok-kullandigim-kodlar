@@ -1,0 +1,10 @@
+
+
+            String[] arrDIZI = new String[veri.length];
+
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_spinner_item, arrDIZI);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(adapter);
+
