@@ -1,0 +1,8 @@
+
+                String UURRLL = "";
+
+                UURRLL = "https://www.google.com.tr/maps/dir/" + benXxX + "," + benYyY + "/" + toXxX + "," + toYyY  + "/@" + toXxX + "," + toYyY + ",17z/";
+
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(UURRLL.toString()));
+                startActivity(browserIntent);
+
