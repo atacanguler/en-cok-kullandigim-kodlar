@@ -1,0 +1,23 @@
+
+
+    implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.3'
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        QRGEncoder qrgEncoder = new QRGEncoder(dataIDqr, null, QRGContents.Type.TEXT,300);
+
+        ImageView qrImage = (ImageView) findViewById(R.id.imageQR);
+
+        Bitmap bitmap;
+        try {
+            // Getting QR-Code as Bitmap
+            bitmap = qrgEncoder.encodeAsBitmap();
+            // Setting Bitmap to ImageView
+            qrImage.setImageBitmap(bitmap);
+
+        } catch (WriterException e) {
+
+        //    Log.v(TAG, e.toString());
+
+        }
