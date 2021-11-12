@@ -1,0 +1,5 @@
+try
+{
+  this.getSupportActionBar().hide();
+}
+catch (NullPointerException e){}
