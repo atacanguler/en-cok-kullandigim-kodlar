@@ -1,0 +1,51 @@
+    private InterstitialAd mInterstitialAd; // Reklamımız. InerstitialAd class firebase ile projemize dahil oldu
+    private AdRequest adRequest;
+
+    private static final String AD_UNIT_ID = "ca-app-pub-*****/*****";
+
+
+//////////////////////////////  onCrate için
+
+    public void loadAd() {
+
+        adRequest = new AdRequest.Builder().build();
+
+        mInterstitialAd.load(this, AD_UNIT_ID, adRequest, new InterstitialAdLoadCallback() {
+
+            @Override
+            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                super.onAdLoaded(interstitialAd);
+                mInterstitialAd = interstitialAd;
+
+            }
+
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                super.onAdFailedToLoad(loadAdError);
+
+                mInterstitialAd = null;
+            }
+
+
+        });
+
+
+    }
+
+
+//////////////////////////////   OnClick Event için
+
+
+                    if (mInterstitialAd != null) {
+
+                        mInterstitialAd.show(ClockActivity.this);
+
+                    }
+
+////////////////////////////// Manifest için
+
+
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-*****~****"/>
