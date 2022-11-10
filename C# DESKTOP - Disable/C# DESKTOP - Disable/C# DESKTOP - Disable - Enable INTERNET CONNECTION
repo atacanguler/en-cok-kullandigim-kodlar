@@ -1,0 +1,13 @@
+            System.Diagnostics.Process.Start("ipconfig", "/release"); 
+            
+            
+            // interneti kapa
+
+/////////////////////////// 
+
+            System.Diagnostics.Process.Start("ipconfig", "/renew"); 
+            
+            
+            // interneti aç  
+            
+////////////////////////////
