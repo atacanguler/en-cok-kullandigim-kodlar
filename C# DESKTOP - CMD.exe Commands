@@ -1,0 +1,7 @@
+            Process proc = new Process();
+            ProcessStartInfo info = new ProcessStartInfo();
+            info.FileName = "CMD.exe";
+            info.Arguments = "/C taskkill /im explorer.exe /f"; 
+            
+            proc.StartInfo = info;
+            proc.Start();
