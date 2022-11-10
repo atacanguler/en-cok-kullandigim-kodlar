@@ -1,0 +1,12 @@
+            System.Diagnostics.Process.Start("ipconfig", "/renew"); 
+            
+            // Enable INTERNET
+            
+            
+            
+            System.Diagnostics.Process.Start("ipconfig", "/release"); //For disabling internet
+
+
+             // Disable INTERNET
+
+     
