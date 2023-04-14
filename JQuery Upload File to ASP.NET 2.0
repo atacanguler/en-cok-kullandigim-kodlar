@@ -1,0 +1,102 @@
+
+    txtFirma = $("#txtFirma").val();
+    txtFirmaTelefon = $("#txtFirmaTelefon").val();
+    txtFirmaAdres = $("#txtFirmaAdres").val();
+    txtIL = $("#txtIL").val();
+    txtILCE = $("#txtILCE").val();
+    txtFirmaYetkili = $("#txtFirmaYetkili").val();
+    txtFirmaBaslangicTarih = $("#txtFirmaBaslangicTarih").val();
+    //txtFirmaDurum = $("#txtFirmaDurum").val();
+    txtKullanici = $("#txtKullanici").val();
+    txtSifre = $("#txtSifre").val();
+    //txtBaglantiDurum = $("#txtBaglantiDurum").val();
+
+    /////////////////////////////////////////////////////////// upload file by Form, Jquery
+    let filess = new FormData();
+    filess.append('file', $('#file')[0].files[0]);
+    ///////////////////////////////////////////////////////////////
+
+
+    if ($("#txtBaglantiDurum").is(':checked')) {
+
+        BaglantiDurum = "1";
+
+    } else {
+
+        BaglantiDurum = "0";
+    }
+    if ($("#txtFirmaDurum").is(':checked')) {
+
+        FirmaDurum = "1";
+
+    } else {
+
+        FirmaDurum = "0";
+    }
+
+    var urlParams = new URLSearchParams(window.location.search);
+
+    if (urlParams.toString().indexOf("grid1_edit=") >= 0) {
+
+        ayirgac = urlParams.toString().split("=");
+        sonucayirgac = ayirgac[1].toString();
+
+
+
+        $.ajax({
+            type: "POST",
+            url: "/post/firma_hesaplama.aspx?" + "ayar_hesap_firma_edit=" + sonucayirgac + "&firma=" + txtFirma + "&firmatelefon=" + txtFirmaTelefon + "&firmaadres=" + txtFirmaAdres + "&firmatarih=" + txtFirmaBaslangicTarih + "&firmayetkili=" + txtFirmaYetkili + "&il=" + txtIL + "&ilce=" + txtILCE + "&kullanici=" + txtKullanici + "&sifre=" + txtSifre + "&durum_baglanti=" + BaglantiDurum + "&durum_firma=" + FirmaDurum,
+            data: filess,
+            //dataType: 'json',
+            async: false,
+            cache: false,
+            contentType: false,
+            enctype: 'multipart/form-data',
+            processData: false,
+
+            ////
+
+            success: function (result) {
+
+                console.log(result);
+
+                func1_postback(result);
+
+            },
+            error: function () {
+                alert("Hata Oluştu!");
+            }
+        });
+
+
+}
+
+
+
+/////////////////////////////     ASP.NET FİLE
+
+
+
+
+                        string dirFullPath = Server.MapPath("~/LOGO/");
+                        string str_image = "";
+
+                        HttpPostedFile file = Request.Files["file"];
+                        string fileName = file.FileName;
+                        string fileExtension = file.ContentType;
+
+                        if (!string.IsNullOrEmpty(fileName))
+                        {
+                            fileExtension = Path.GetExtension(fileName);
+                            str_image = IDDD + "_" + fileExtension;
+
+                            if (Server.MapPath("~/LOGO/") + str_image!=null)
+                            {
+                                File.Delete(HttpContext.Current.Server.MapPath("~/LOGO/") + str_image);
+                            }
+                        
+                        
+                            string pathToSave_100 = HttpContext.Current.Server.MapPath("~/LOGO/") + str_image;
+                            file.SaveAs(pathToSave_100);
+                        }
+
