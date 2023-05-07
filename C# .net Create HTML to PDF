@@ -1,0 +1,19 @@
+using SelectPdf;
+
+
+  var htmlToPdfConverter = new NReco.PdfGenerator.HtmlToPdfConverter();
+
+  var ppdf = htmlToPdfConverter.GeneratePdf(htmll);
+
+  string filename = Server.MapPath("servisformu") + "\\documnet.pdf";
+
+  if (filename != null && filename.Length > 0 && ppdf != null)
+  {
+
+      FileStream file = File.Create(filename);
+
+      file.Write(ppdf, 0, ppdf.Length);
+
+      file.Close();
+  }
+
