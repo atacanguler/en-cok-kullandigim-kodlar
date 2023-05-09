@@ -1,0 +1,24 @@
+    protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+
+
+        if (e.CommandName == "sil")
+        {
+            int index = Convert.ToInt32(e.CommandArgument);
+            GridViewRow aRow = GridView1.Rows[index];
+            string iii = aRow.Cells[4].Text.ToString();
+
+            Response.Redirect("url.aspx?csil=" + iii.ToString());
+
+        }
+
+        if (e.CommandName == "edit")
+        {
+            int index = Convert.ToInt32(e.CommandArgument);
+            GridViewRow aRow = GridView1.Rows[index];
+            string iii = aRow.Cells[4].Text.ToString();
+
+            Response.Redirect("url.aspx?cedit=" + iii.ToString());
+
+        }
+    }
