@@ -1,0 +1,106 @@
+
+    function ValidateEmail() {
+
+        var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+        if (document.getElementById("eposta").value.match(validRegex)) {
+
+            document.getElementById("epostaVal").innerHTML = "<span style=\"color:green;\">Geçerli !</span>";
+
+            Kilit_Eposta = 1;
+
+        } else {
+
+            document.getElementById("eposta").focus();
+
+            document.getElementById("epostaVal").innerHTML = "Geçerli bir eposta giriniz !";
+
+            Kilit_Eposta = 0;
+        }
+
+    }
+
+    function ValidatePhone() {
+
+    var validRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+
+        if (document.getElementById("telefon").value.match(validRegex)) {
+
+            document.getElementById("telefonVal").innerHTML = "<span style=\"color:green;\">Geçerli !</span>";
+
+            Kilit_Telefon = 1;
+
+        } else {
+
+            document.getElementById("telefon").focus();
+
+            document.getElementById("telefonVal").innerHTML = "Geçerli bir telefon giriniz !";
+
+            Kilit_Telefon = 0;
+        }
+
+    }
+    function ValidateHesap() {
+
+        var validRegex = /^(?=.*?[a-z]).{6,}$/;
+
+        if (document.getElementById("hesap").value.match(validRegex)) {
+
+            document.getElementById("hesapVal").innerHTML = "<span style=\"color:green;\">Geçerli !</span>";
+
+            Kilit_Hesap = 1;
+
+        } else {
+
+            document.getElementById("hesap").focus();
+
+            document.getElementById("hesapVal").innerHTML = "Geçerli bir ifade giriniz ! Sadece Küçük Harf Girilmeli ve en az 6 karekter olmalıdır !";
+
+            Kilit_Hesap = 0;
+
+        }
+
+    }
+
+    function ValidatePass() {
+
+        var validRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
+
+        if (document.getElementById("passw").value.match(validRegex)) {
+
+            document.getElementById("passwVal").innerHTML = "<span style=\"color:green;\">Geçerli !</span>";
+
+            Kilit_Sifre = 1;
+
+
+        } else {
+
+            document.getElementById("passw").focus();
+
+            document.getElementById("passwVal").innerHTML = "Geçerli bir şifre giriniz ! Büyük/Küçük Harf, Numara ve Özel Karekter Girilmeli !";
+
+            Kilit_Sifre = 0;
+
+        }
+
+    }
+    function ValidatePass2() {
+
+        var validRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
+
+        if (document.getElementById("passw2").value.match(validRegex)) {
+
+            document.getElementById("passw2Val").innerHTML = "<span style=\"color:green;\">Geçerli !</span>";
+
+            Kilit_Sifre2 = 1;
+
+        } else {
+
+            document.getElementById("passw2").focus();
+
+            document.getElementById("passw2Val").innerHTML = "Geçerli bir şifre giriniz ! Büyük/Küçük Harf, Numara ve Özel Karekter Girilmeli !";
+
+            Kilit_Sifre2 = 0;
+        }
+
+    }
