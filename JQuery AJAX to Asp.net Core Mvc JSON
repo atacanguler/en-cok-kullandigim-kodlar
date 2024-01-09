@@ -1,0 +1,55 @@
+
+function profil_kaydet() {
+
+    ztxt_eposta = document.getElementById("zEposta").value;
+    ztxt_adsoyad = document.getElementById("zAdSoyad").value;
+    ztxt_lakap = document.getElementById("zLakap").value;
+    ztxt_sifre = document.getElementById("zSifre").value;
+    ztxt_sifre2 = document.getElementById("zSifreTekrar").value;
+
+    var formData = new FormData();
+    formData.append('zResim', $('#zResim')[0].files[0]);
+
+    var objArr = [];
+    objArr.push({
+
+        "txt_eposta": ztxt_eposta,
+        "txt_adsoyad": ztxt_adsoyad,
+        "txt_lakap": ztxt_lakap,
+        "txt_sifre": ztxt_sifre,
+        "txt_sifre2": ztxt_sifre2
+
+    });
+
+    formData.append("objArr", JSON.stringify(objArr));
+
+
+
+
+    if (ztxt_eposta != "" && ztxt_adsoyad != "" && ztxt_lakap != "" && ztxt_sifre != "" && ztxt_sifre2 != "") {
+
+        $.ajax({
+
+            type: "POST",
+            url: '/Home/profilkaydet',
+            contentType: false,
+            processData: false,
+            cache: false,
+            data: formData,
+            dataType: "json",
+            contentType: "multipart/form-data",
+
+            success: function (result) {
+
+                profil_kaydet_FONK(result);
+
+            },
+            error: function () {
+                alert('Hata !');
+            }
+
+        });
+
+
+    } 
+}
