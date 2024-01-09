@@ -1,0 +1,12 @@
+
+////       GET SESSOIN
+
+            var bytesX = default(byte[]);
+            HttpContext.Session.TryGetValue("key", out bytesX);
+            var DATA = Encoding.UTF8.GetString(bytesX);
+
+
+/////      SET SESSION
+
+            byte[] bytes = Encoding.ASCII.GetBytes("STRINGDATA");
+            HttpContext.Session.Set("key", bytes);
