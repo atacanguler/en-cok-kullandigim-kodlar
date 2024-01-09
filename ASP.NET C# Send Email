@@ -1,0 +1,32 @@
+
+
+            try
+            {
+
+                SmtpClient smtpClient = new SmtpClient(host, int.Parse(PORT));
+
+                smtpClient.Credentials = new System.Net.NetworkCredential(kullaniciposta, sifre);
+                // smtpClient.UseDefaultCredentials = true; // uncomment if you don't want to use the network credentials
+                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtpClient.EnableSsl = booll;
+
+                MailMessage mail = new MailMessage();
+
+                //Setting From , To and CC
+                mail.From = new MailAddress(kullaniciposta);
+                mail.To.Add(new MailAddress(giden_eposta));
+
+                mail.Subject = BASLIK;
+                mail.Body = GOVDE;
+
+                smtpClient.Send(mail);
+
+                /////////////////////////////////////////////////////////////////////////
+
+                sonuc="1";
+
+            }
+            catch
+            {
+                sonuc = "0";
+            }
