@@ -1,0 +1,9 @@
+string file = "https://i.dr.com.tr/cache/154x170-0/originals/img.jpg";
+
+using (WebClient c = new WebClient())
+{
+
+    c.DownloadFile(new Uri(file), "wwwroot/kitap/" + resimm);
+    
+
+}
