@@ -1,0 +1,19 @@
+WebClient client = new WebClient();
+                string htmlString = client.DownloadString(url);
+
+                // htmlBelgesiument nesnesi oluştur.
+                HtmlAgilityPack.HtmlDocument htmlBelgesi = new HtmlAgilityPack.HtmlDocument();
+
+                // Etiket kapatma hatalarını düzeltsin.
+                htmlBelgesi.OptionFixNestedTags = true;
+
+                // Belgeyi çözümle
+                htmlBelgesi.LoadHtml(htmlString);
+
+                // id özellik değeri contract olan etiketin içindeki 6. img etiketinden sonra gelen ilk
+                // metin düğümünü bul ve secilenler isimli koleksiyona ata.
+                
+                //HtmlAgilityPack.HtmlNodeCollection secilenler = htmlBelgesi.DocumentNode.InnerText.ToString();
+
+
+                string genelveri = htmlString.ToString().Replace("data-gtm='{","ß");
