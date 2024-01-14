@@ -1,0 +1,40 @@
+        [HttpPost]
+        public JsonResult kitapeklesayfa_oKitapYazar(kitapekle k)
+        {
+
+            string durum = "";
+
+            //string kitapadi = k.oKitapAdi.ToString();
+            string kitapyazar = k.oKitapYazar.ToString();
+            //string kitapyazyinevi = k.oKitapYayinevi.ToString();
+            //string kitapresim = k.oKitapResim.ToString();
+            //string kitapktg = k.oKitapKategori.ToString();
+
+
+            if (kitapyazar != null)
+            {
+
+
+
+                string SQL = "SELECT * FROM table_yazar WHERE table_yazar.Yazar LIKE '%" + kitapyazar + "%'";
+
+                MySqlConnection conn = new MySqlConnection(Connstring.ToString());
+                MySqlCommand cmd = new MySqlCommand(SQL, conn);
+
+
+                DataTable dt = new DataTable();
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+                da.Fill(dt);
+
+                durum = "";
+                foreach (DataRow dr in dt.Rows)
+                {
+                    durum += dr["Yazar"].ToString() + "~" + dr["ID"].ToString() + ";";
+                }
+            }
+
+            k.oKitapResim = durum;
+
+            return Json(k.oKitapResim);
+        }
