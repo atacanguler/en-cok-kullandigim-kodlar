@@ -1,0 +1,8 @@
+if (zResim!=null)
+            {
+                uniqueFileName = GetUniqueFileName(zResim.FileName);
+
+                var filePath = Path.Combine("wwwroot\\user", uniqueFileName);
+                zResim.CopyToAsync(new FileStream(filePath, FileMode.Create));
+
+            }
