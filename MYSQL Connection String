@@ -1,0 +1,3 @@
+//MYSQL Connection String
+
+        string Connstring = "Server=localhost;Database=***;Uid=***;Pwd=***;Convert Zero Datetime=True;Character Set=utf8;";
