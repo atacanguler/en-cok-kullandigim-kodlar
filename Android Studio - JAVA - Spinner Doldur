@@ -1,10 +1,60 @@
 
+    String[] sp_text = null;
+    String[] sp_value = null;
 
-            String[] arrDIZI = new String[veri.length];
+
+    public void GrupCek(){
 
 
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                    android.R.layout.simple_spinner_item, arrDIZI);
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinner.setAdapter(adapter);
+        DatabaseHelper dh = new DatabaseHelper(this);
 
+        String[] veri = dh.getNode_TABLE_Grup();
+
+
+        sp_text = new String[veri.length+1];
+        sp_value = new String[veri.length+1];
+
+
+        sp_text[0] = "GRUP SEÇİNİZ";
+        sp_value[0] = "0";
+
+        if (veri.length>1){
+
+            for (int y=1; y<=veri.length;y++){
+
+                String[] veri00 = veri[y-1].toString().split("~");
+                String ad = veri00[1].toString();
+                String id = veri00[0].toString();
+
+                sp_text[y] = ad;
+                sp_value[y] = id;
+            }
+
+        }
+
+        ArrayAdapter<String> sp_adapter = new ArrayAdapter<String>(this, R.layout.spinertext,sp_text);
+        sp_adapter.setDropDownViewResource(R.layout.spinner_selector);
+        Spinner sp = (Spinner) findViewById(R.id.spinner);
+        sp.setAdapter(sp_adapter);
+
+
+        ArrayAdapter<String> sp_adapter2 = new ArrayAdapter<String>(this, R.layout.spinertext,sp_text);
+        sp_adapter2.setDropDownViewResource(R.layout.spinner_selector);
+        Spinner sp2 = (Spinner) findViewById(R.id.spinnerSil);
+        sp2.setAdapter(sp_adapter2);
+
+    }
+
+
+
+//////////////////////////////////////////////////////////
+
+
+
+                /////
+                Spinner iX = (Spinner) findViewById(R.id.spinnerSil);
+                int spinner_pos = iX.getSelectedItemPosition();
+                int size = Integer.valueOf(sp_value[spinner_pos]);
+                String X = String.valueOf(size);
+
+                //////////////
