@@ -1,0 +1,18 @@
+        Date currentTime = Calendar.getInstance().getTime();
+        String SimdikiZaman = currentTime.toString();
+
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-M-d H:m");
+        String date = format.format(Date.parse(SimdikiZaman));
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(currentTime);
+        cal.add(Calendar.MINUTE,5);
+        String SimdikiZaman_before5min = cal.getTime().toString();
+
+
+        SimpleDateFormat formatX = new SimpleDateFormat("yyyy-M-d H:m");
+        String dateX = formatX.format(Date.parse(SimdikiZaman_before5min));
+        ////////////////////////////////////////////////////////////////////////////////////////////////
