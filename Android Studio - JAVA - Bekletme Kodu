@@ -1,0 +1,14 @@
+
+
+            Thread closeActivity = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Thread.sleep(1000);
+                        // Do some stuff
+                    } catch (Exception e) {
+                        e.getLocalizedMessage();
+                    }
+                }
+            });
+
