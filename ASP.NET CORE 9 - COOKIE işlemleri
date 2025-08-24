@@ -1,0 +1,45 @@
+            string veri = "213213132113133313";
+
+            string verii = _protector.Protect(veri);
+
+
+            Response.Cookies.Append("keyID", verii, new CookieOptions
+            {
+                HttpOnly = false,
+                Secure = true,
+                MaxAge = TimeSpan.FromDays(365),
+                //Domain = "kitapligim.com.tr",
+                Expires = DateTimeOffset.UtcNow.AddDays(365)
+            });
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////  COOKİE OLUŞTUR
+
+
+            var veri = Request.Cookies["keyID"];
+
+
+            if (!string.IsNullOrEmpty(veri))
+            {
+
+                verii = _protector.Unprotect(veri);
+
+            }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////// COOKİE VERİSİ ÇEK
+
+
+                        HttpContext.Response.Cookies.Delete("keyID");
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////   COOKİE SİL
+
+
+
+
+            foreach (var cookie in Request.Cookies.Keys)
+            {
+                Response.Cookies.Delete(cookie);
+            }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////  BÜTÜN SİTE COOKİELERİNİ SİL
