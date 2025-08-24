@@ -1,0 +1,59 @@
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+function ajaxGETfunction() {
+
+
+
+    sKategori = document.getElementById("sKategori").value.toString();
+    sKaydet = document.getElementById("sKaydet").value.toString();
+    sID = document.getElementById("ssid").value.toString();
+
+    if (sKategori != null && sKaydet != null && sID != null) {
+
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+
+        $.ajax({
+
+            type: "GET",
+            url: '/kitapligim',
+            //dataType: "json",
+            //contentType: "application/json; charset=utf-8",
+            data: {
+
+                "sKategori": sKategori,
+                "sKaydet": sKaydet,
+                "id": sID
+
+            },
+            headers: {
+                "RequestVerificationToken": token
+            },
+            success: function (result) {
+
+               
+                xDuyuruGoster("Kitap Başarıyla Eklendi !");
+
+            },
+            error: function () {
+                alert('Hata !');
+            }
+
+        });
+
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+        public IActionResult OnGet()
+        {
+
+          return Page();
+        }
