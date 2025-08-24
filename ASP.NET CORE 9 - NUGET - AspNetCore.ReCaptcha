@@ -1,0 +1,95 @@
+//////////////////////////////////////////////////////////////////////////////////////////////    html e ekle
+
+@Html.ReCaptcha() <!-- reCAPTCHA burada çıkacak -->
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////    js kodu
+
+
+
+function CaptchaileVeriGonder() {
+
+
+    txt_eposta = document.getElementById("txteposta_sifremiunuttum").value;
+
+    var token = $('input[name="__RequestVerificationToken"]').val();
+
+    captchax = document.getElementsByName("g-recaptcha-response")[0].value;
+
+
+    if (txt_eposta != "") {
+
+        $.ajax({
+
+            type: "POST",
+            url: '/Index',
+            //dataType: "json",
+            //contentType: "application/json; charset=utf-8",
+            data: {
+
+                "txteposta": txt_eposta, captchax: captchax
+
+            },
+            headers: {
+                "RequestVerificationToken": token
+            },
+            success: function (result) {
+
+                _FONK(result.durum);
+
+            },
+            error: function () {
+                alert('Hata !');
+            }
+
+        });
+    } 
+}
+
+
+
+
+//////////////////////////////////////////////////////////////////////    js captcha resetleme
+
+if (typeof grecaptcha !== "undefined") {
+        var recaptchaWidgets = document.querySelectorAll('iframe[src*="recaptcha"]');
+        for (var i = 0; i < recaptchaWidgets.length; i++) {
+            grecaptcha.reset(i);
+        }
+    }
+
+
+
+///////////////////////////////////////////////////////////////////////     razor sayfası .cs kodu
+
+
+        [BindProperty]
+        public string txt_eposta { get; set; }
+
+
+        /// ///////////////////
+        [BindProperty]
+        public string captchax { get; set; }
+
+////////////
+
+
+        public async Task<JsonResult> OnPostAsync()
+        {
+
+                var captchaResponse = Request.Form["captchax"];
+
+                // Doğrulama isteği
+                var valid = await _reCaptcha.VerifyAsync(captchaResponse);
+
+                if (!valid)
+                {
+                    durum = "robotdegilim";
+
+                    return new JsonResult(new { durum = durum });
+                }
+
+
+return new JsonResult(new { durum = durum });
+}
