@@ -1,0 +1,185 @@
+/// JSON datasını ve input File dosyasını AJAX POST ile ASP.NET core 9 handler=SaveJson metoduna yolla /////
+
+
+
+
+function kitap_ekleme() {
+
+    var file = $('#oKitapResim')[0].files[0];
+
+    oKitapAdi = document.getElementById("oKitapAdi").value.toString();
+    oKitapAdiID = document.getElementById("oKitapAdiID").value.toString();
+    oKitapYayineviID = document.getElementById("oKitapYayineviID").value.toString();
+    oKitapYazarID = document.getElementById("oKitapYazarID").value.toString();
+    oKitapKategori = document.getElementById("oKitapKategori").value.toString();
+
+    
+    oKitapYazar = document.getElementById("oKitapYazar").value.toString();
+    oKitapYayinevi = document.getElementById("oKitapYayinevi").value.toString();
+
+    oKitapAdi_detay = document.getElementById("oKitapAdi_detay").value.toString();
+    oKitapAdi_yayintarih = document.getElementById("oKitapAdi_yayintarih").value.toString();
+
+    if (oKitapAdi != "") {
+
+
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+        const jsonData = JSON.stringify({
+
+            oYeniKitapEkleme: "aktif",
+            oKitapAdi: oKitapAdi,
+            oKitapAdiID: oKitapAdiID,
+            oKitapYayineviID: oKitapYayineviID,
+            oKitapYazarID: oKitapYazarID,
+            oKitapKategori: oKitapKategori,
+            oKitapYazar: oKitapYazar,
+            oKitapYayinevi: oKitapYayinevi,
+            oKitapAdi_detay: oKitapAdi_detay,
+            oKitapAdi_yayintarih: oKitapAdi_yayintarih
+        });
+
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("jsonData", jsonData);
+
+        $.ajax({
+            url: "/kitapligimekle?handler=SaveJsonX",
+            type: "POST",
+            data: formData,
+            processData: false, // FormData için GEREKLİ
+            contentType: false, // FormData için GEREKLİ
+            headers: {
+                "RequestVerificationToken": token
+            },
+            success: function (data) {
+
+                sonuc = data.message;
+
+                xDuyuruGoster(sonuc);
+
+            },
+            error: function (xhr, status, error) {
+                sonuc = "Hata: " + error;
+            }
+        });
+
+
+
+    } else {
+
+
+
+    }
+}
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        public async Task<JsonResult> OnPostSaveJsonXAsync(IFormFile file, [FromForm] string jsonData)
+        {
+
+
+
+            string durum = "";
+
+
+                // 1. JSON verisini deserialize et
+
+                    
+                FormModel dataa = JsonConvert.DeserializeObject<FormModel>(jsonData);
+
+                string oYeniKitapEkleme = dataa.oYeniKitapEkleme.ToString();
+
+                string oKitapAdi = dataa.oKitapAdi.ToString();
+
+                string oKitapAdiID = dataa.oKitapAdiID.ToString();
+
+                string oKitapYayineviID = dataa.oKitapYayineviID.ToString();
+
+                string oKitapYazarID = dataa.oKitapYazarID.ToString();
+
+                string oKitapKategori = dataa.oKitapKategori.ToString();
+
+                string oKitapYazar = dataa.oKitapYazar.ToString();
+
+                string oKitapYayinevi = dataa.oKitapYayinevi.ToString();
+
+                string oKitapAdi_detay = dataa.oKitapAdi_detay.ToString();
+
+                string oKitapAdi_yayintarih = dataa.oKitapAdi_yayintarih.ToString();
+             
+                
+
+                        ///////////////////////  diğer veritabanı işlemleri yapılıyor
+
+
+
+                        if (!string.IsNullOrEmpty(oKitapAdiID) && !string.IsNullOrEmpty(oKitapAdi) && !string.IsNullOrEmpty(oKitapYayineviID) && !string.IsNullOrEmpty(oKitapYazarID))
+                        {
+
+                        ////// YENİ KİTABI EKLE ****
+                        ///
+
+
+                        ///////////////////////////////////////////////////////////////////////////////////// resim dosyası yükleniyor
+
+
+                            // 2. Dosya kontrolü
+
+                            if (file == null || file.Length == 0)
+                            {
+                                return new JsonResult(new { success = false, message = "Dosya boş veya seçilmedi !" });
+                            }
+
+                            string uniqueFileName = file.FileName.ToString();
+                            
+                            string extension = Path.GetExtension(uniqueFileName).ToLowerInvariant();
+
+                            if (extension != ".png" && extension != ".jpg" && extension != ".PNG" && extension != ".JPG")
+                            {
+
+                                return new JsonResult(new { success = false, message = "Resim Dosyanız .JPG veya .PNG Olmalıdır !" });
+                            
+                            }
+
+                            // 3. Dosyayı kaydet
+                            var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/kitap");
+
+                            if (!Directory.Exists(uploadsFolder))
+                            {
+                                Directory.CreateDirectory(uploadsFolder);
+                            }
+
+                            var filePath = Path.Combine(uploadsFolder, file.FileName);
+
+                            using (var stream = new FileStream(filePath, FileMode.Create))
+                            {
+    
+                                long zSize = stream.Length;
+                                double sizeInMB = zSize / (1024.0);
+    
+                                if (sizeInMB > 1024)
+                                {
+                                    return new JsonResult(new { success = false, message = "Resim Dosyanız 1 MB dan Büyük Olamaz !" });
+    
+                                }
+    
+    
+                                await file.CopyToAsync(stream);
+                            }
+
+            }
+            /////////////////////// diğer veritabanı işlemleri yapılıyor
+
+            // 4. Cevap dön
+
+            return new JsonResult(new { success = false, message = "Kitap Başarıyla Eklendi !" });
+
+        }
+
