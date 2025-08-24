@@ -1,0 +1,113 @@
+Bir Razor Sayfasına, 
+
+        ILogger<IndexModel> _logger;    // debugging için gerekli
+        IDataProtector _protector;      // şifreleme yapmaya yarar Cookie için Kullanılır
+        IReCaptchaService _reCaptcha;   // Nuget "AspNetCore.ReCaptcha" wiget için gerekli
+        IConfiguration configuration    // Database Connstring tanımlamasını çeker
+
+////////////////////////////////////////////      Program.cs Dosyası
+
+
+using AspNetCore.ReCaptcha;
+using Microsoft.Extensions.FileProviders;
+
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddReCaptcha(builder.Configuration.GetSection("ReCaptcha"));
+
+// Add services to the container.
+builder.Services.AddRazorPages();
+
+builder.Services.AddDataProtection();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
+}
+
+// wwwroot’tan statik dosya servis et
+app.UseStaticFiles();
+
+// wwwroot dışı bir klasörden statik dosya servis etmek istersen:
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(builder.Environment.ContentRootPath, "wwwroot/kitap")),
+    RequestPath = "/kitap"
+});
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(builder.Environment.ContentRootPath, "wwwroot/user")),
+    RequestPath = "/user"
+});
+
+app.UseHttpsRedirection();
+
+app.UseRouting();
+
+app.UseAuthorization();
+
+app.MapStaticAssets();
+
+app.MapControllers();
+
+app.MapRazorPages()
+   .WithStaticAssets();
+
+app.Run();
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////           appsettings.json
+
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+
+  "ReCaptcha": {
+    "SiteKey": "6LdnXKsrAAAAAOTg5jLkla-u7Sx4mne3h2GMd8Z-",
+    "SecretKey": "6LdnXKsrAAAAAO3W3GENSzGCDFZiQrC2_OBref3Q"
+  },
+
+ // "ConnectionStrings": {
+  //  "DefaultConnection": "Server=localhost;Database=kitapligimcomtr2024;Uid=root;Convert Zero Datetime=True;Character Set=utf8;"
+  //}
+  
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=localhost;Database=kitapligimcomtr2024.17151984;Uid=sakitapligim;Pwd=1c7!7li3G;Convert Zero Datetime=True;Character Set=utf8;"
+  }
+
+}
+
+
+        private readonly ILogger<IndexModel> _logger;
+        private readonly IDataProtector _protector;
+        private readonly IReCaptchaService _reCaptcha;
+        private readonly string _connString;
+
+        string Connstring = "";
+        public IndexModel(ILogger<IndexModel> logger, IDataProtectionProvider provider, IReCaptchaService reCaptcha, IConfiguration configuration)
+        {
+            _logger = logger;
+            _protector = provider.CreateProtector("1v.1z6db*df");
+            _reCaptcha = reCaptcha;
+            _connString = configuration.GetConnectionString("DefaultConnection");
+
+            Connstring = _connString;
+
+        }
