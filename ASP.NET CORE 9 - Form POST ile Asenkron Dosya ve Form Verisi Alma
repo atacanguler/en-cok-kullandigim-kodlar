@@ -1,0 +1,98 @@
+        [BindProperty]
+        public string zEposta { get; set; }
+
+        [BindProperty]
+        public string zAdSoyad { get; set; }
+
+        [BindProperty]
+        public string zLakap { get; set; }
+
+        [BindProperty]
+        public string zSifre { get; set; }
+
+        [BindProperty]
+        public string zSifreTekrar { get; set; }
+
+        //   IFormFile zResim;
+
+        [BindProperty]
+        public string zResimName { get; set; }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+
+            string durum = "";
+
+
+            if (!string.IsNullOrEmpty(zEposta) && !string.IsNullOrEmpty(zAdSoyad) && !string.IsNullOrEmpty(zLakap) && !string.IsNullOrEmpty(zSifre) && !string.IsNullOrEmpty(zSifreTekrar)) { 
+
+
+                string eposta = zEposta.ToString();
+                string adsoyad = zAdSoyad.ToString();
+                string lakap = zLakap.ToString();
+                string sifre = zSifre.ToString();
+                string sifre2 = zSifreTekrar.ToString();
+
+                var uniqueFileName = "";
+
+                var zResim = Request.Form.Files["zResim"];
+
+                if (zResim != null)
+                {
+                    uniqueFileName = GetUniqueFileName(zResim.FileName);
+
+                    string extension = Path.GetExtension(uniqueFileName).ToLowerInvariant();
+
+                    if (extension != ".png" && extension != ".jpg" && extension != ".PNG" && extension != ".JPG")
+                    {
+                        durum = "@resimdegil";
+                        ViewData["profilDurum"] = durum;
+                        ViewData["kitapid"] = "0";
+
+                        return Page();
+
+                    }
+
+
+                    var filePath = Path.Combine("wwwroot\\user", uniqueFileName);
+
+                    long zSize = zResim.Length;
+                    double sizeInMB = zSize / (1024.0);
+
+                    if (sizeInMB > 1024)
+                    {
+                        
+                            durum = "@resimbuyuk";
+                            ViewData["profilDurum"] = durum;
+                            ViewData["kitapid"] = "0";
+
+                            return Page();
+                        
+                    }
+
+                    zResim.CopyToAsync(new FileStream(filePath, FileMode.Create));
+
+                }
+                else
+                {
+                    if (zResimName != null)
+                    {
+                        uniqueFileName = zResimName;
+                    }
+                }
+
+
+            }
+            else
+            {
+                durum = "@bosalanvar";
+
+
+            }
+
+
+
+            return Page();
+
+        }
+
